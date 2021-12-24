@@ -1,0 +1,23 @@
+import Configuration
+from Classes.ByteStream import ByteStream
+from Classes.Utility import Utility
+
+
+class LogicCommand(ByteStream):
+    def __init__(self, commandData):
+        super().__init__(commandData)
+        self.messageBuffer = commandData
+        self.messagePayload = commandData
+
+    def encode(self, fields):
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVLong(0, 0)
+
+    def decode(calling_instance, fields):
+        fields["TickWhenGiven"] = calling_instance.readVint()
+        fields["ExecuteTick"] = calling_instance.readVint()
+        fields["ExecutorAccountID"] = calling_instance.readVLong()
+        if Configuration.settings['PrintEnabled']:
+            Utility.parseFields(fields)
+        return fields
