@@ -1,6 +1,9 @@
 ANDROID : https://www.mediafire.com/file/fkd05u3xyv0amks/com.projectbsds.v41131.apk/file
 
-## Requirements: pip install bitstream ##
+## Requirements: ##
+1. pip install bitstream
+2. pip install numpy
+
 
 ## Change the ip address and port (if needed) in libmeow.js located in the lib folder ##
 
