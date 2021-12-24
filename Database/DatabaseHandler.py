@@ -9,8 +9,8 @@ class DatabaseHandler():
         self.cursor = self.conn.cursor()
         try:
             self.cursor.execute("""CREATE TABLE main (ID int, Token text, Data json)""")
-        except:
-            pass
+        except Exception:
+            print(traceback.format_exc())
 
     def createAccount(self, plrId, token, data):
         try:
@@ -83,8 +83,11 @@ class DatabaseHandler():
             print(traceback.format_exc())
 
     def playerExist(self, loginToken, loginID):
-        if loginID[1] in self.getAll():
-            if loginToken != self.getPlayerEntry(loginID)[1]:
-                return False
-            return True
-        return False
+        try:
+            if loginID[1] in self.getAll():
+                if loginToken != self.getPlayerEntry(loginID)[1]:
+                    return False
+                return True
+            return False
+        except Exception:
+            print(traceback.format_exc())
