@@ -14,10 +14,14 @@ class LogicCommand(ByteStream):
         self.writeVint(0)
         self.writeVLong(0, 0)
 
-    def decode(calling_instance, fields):
+    def decode(calling_instance, fields, auto_decode=True):
         fields["TickWhenGiven"] = calling_instance.readVint()
         fields["ExecuteTick"] = calling_instance.readVint()
         fields["ExecutorAccountID"] = calling_instance.readVLong()
-        if Configuration.settings['PrintEnabled']:
+        if Configuration.settings['PrintEnabled'] and auto_decode == True:
             Utility.parseFields(fields)
         return fields
+
+    def parseFields(fields):
+        if Configuration.settings['PrintEnabled']:
+            Utility.parseFields(fields)

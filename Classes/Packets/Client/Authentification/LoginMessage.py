@@ -59,6 +59,7 @@ class LoginMessage(PiranhaMessage):
             db_instance.createAccount(calling_instance.player.getDataTemplate(fields["AccountID"][0], fields["AccountID"][1], fields["PassToken"]))
 
         ClientsManager.AddPlayer(calling_instance.player.ID, calling_instance.client)
+
         contentUpdateInfo = Utility.getContentUpdaterInfo()
         if fields["ResourceSha"] != contentUpdateInfo[1]:
             Messaging.sendMessage(20103, {'Socket': calling_instance.client, 'ErrorID': 7, 'Message': None, 'FingerprintData': Utility.getFingerprintData(contentUpdateInfo[1]), 'ContentURL': f'http://{socket.gethostbyname(socket.gethostname())}:8080'})
@@ -66,6 +67,7 @@ class LoginMessage(PiranhaMessage):
         elif fields["ClientMajor"] == 41:
             Messaging.sendMessage(20104, fields, calling_instance.player)
             Messaging.sendMessage(24101, fields, calling_instance.player)
+        db_instance.cursor.close()
 
     def getMessageType(self):
         return 10101

@@ -80,7 +80,36 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(0)  # Change Name Cost
         self.writeVint(0)  # Timer For the Next Name Change
 
+        self.writeVint(1) # Offers count
+
+        self.writeVint(1)  # RewardCount
+        for i in range(1):
+            self.writeVint(6)  # ItemType
+            self.writeVint(0)
+            self.writeDataReference(0)  # CsvID
+            self.writeVint(0)
+
         self.writeVint(0)
+        self.writeVint(666)
+        self.writeVint(950400)
+        self.writeVint(2)
+        self.writeVint(0)
+        self.writeBoolean(False)
+        self.writeVint(3917)
+        self.writeVint(0)
+        self.writeBoolean(False)
+        self.writeVint(49)
+        self.writeInt(0)
+        self.writeString("Unlock all skins")
+        self.writeBoolean(False)
+        self.writeString()
+        self.writeVint(-1)
+        self.writeBoolean(False)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeString()
+        self.writeBoolean(False)
+        self.writeBoolean(False)
 
         self.writeVint(0)
 

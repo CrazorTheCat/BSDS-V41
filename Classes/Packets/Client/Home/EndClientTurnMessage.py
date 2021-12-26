@@ -22,20 +22,22 @@ class EndClientTurnMessage(PiranhaMessage):
         fields["Commands"] = []
         for i in range(fields["CommandsCount"]):
             fields["Commands"].append({"ID": self.readVint()})
-            if not LogicCommandManager.isServerToClient(fields["Commands"][i]["ID"]):
-                self.readVint()
-                self.readVint()
-                self.readVLong()
             if LogicCommandManager.commandExist(fields["Commands"][i]["ID"]):
                 command = LogicCommandManager.createCommand(fields["Commands"][i]["ID"])
                 print("Command", LogicCommandManager.getCommandsName(fields["Commands"][i]["ID"]))
                 if command is not None:
-                    command.decode(self)
+                    fields["Commands"][i]["Fields"] = command.decode(self)
+                    fields["Commands"][i]["Instance"] = command
         return fields
 
     def execute(message, calling_instance, fields):
         fields["Socket"] = calling_instance.client
-        pass
+        for command in fields["Commands"]:
+            if "Instance" not in command.keys():
+                return
+
+            if hasattr(command["Instance"], 'execute'):
+                command["Instance"].execute(calling_instance, command["Fields"])
 
     def getMessageType(self):
         return 14102

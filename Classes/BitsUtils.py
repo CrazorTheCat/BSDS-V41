@@ -9,6 +9,4 @@ class BitsUtils:
         return BitStream(bools)
 
     def getBitstream(byte=None):
-        if byte == None:
-            return BitStream()
         return BitStream(byte)

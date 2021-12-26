@@ -8,6 +8,7 @@ from Classes.Packets.Client.Home.GoHomeMessage import GoHomeMessage
 from Classes.Packets.Client.Socket.KeepAliveMessage import KeepAliveMessage
 from Classes.Packets.Server.Authentification.LoginFailedMessage import LoginFailedMessage
 from Classes.Packets.Server.Authentification.LoginOkMessage import LoginOkMessage
+from Classes.Packets.Server.Authentification.OutOfSyncMessage import OutOfSyncMessage
 from Classes.Packets.Server.Authentification.ServerHelloMessage import ServerHelloMessage
 from Classes.Packets.Server.Battle.BattleEndMessage import BattleEndMessage
 from Classes.Packets.Server.Home.AvailableServerCommandMessage import AvailableServerCommandMessage
@@ -266,7 +267,7 @@ class LogicLaserMessageFactory:
         23494: 'GoogleServiceAccountAlreadyBoundMessage',
         23774: 'PlayerJWTokenMessage',
         24101: OwnHomeDataMessage,
-        24104: 'OutOfSyncMessage',
+        24104: OutOfSyncMessage,
         24105: 'SpectacleFailedMessage',
         24106: 'StopHomeLogicMessage',
         24108: 'MatchmakeFailedMessage',

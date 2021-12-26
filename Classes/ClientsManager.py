@@ -3,6 +3,8 @@ class ClientsManager:
     PlayersList = {}
 
     def AddPlayer(playerID, socket):
+        if ClientsManager.PlayersList.keys().__contains__(playerID[1]):
+            ClientsManager.RemovePlayer(playerID)
         ClientsManager.PlayersList[playerID[1]] = {"Socket": socket}
 
     def RemovePlayer(PlayerID):

@@ -193,7 +193,7 @@ class ByteStream(BufferedReader):
         self.writeVint(low)
 
     def writeDataReference(self, high=-1, low=0):
-        if high == -1:
+        if high == -1 or high == 0:
             self.writeVint(0)
             return
         self.writeVint(high)

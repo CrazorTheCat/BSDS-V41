@@ -2,11 +2,8 @@ import csv
 
 
 class Skins:
-
     def getSkinsID():
-
         SkinsID = []
-
         with open('Classes/Files/assets/csv_logic/skins.csv') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             line_count = 0
@@ -150,24 +147,32 @@ class Skins:
             else:
                 line_count += 1
                 if line_count == brawlerID + 3:
-                    name = row[3] + "_"
-                    if row[0] == "SpawnerDude":
-                        name = "mrp_"
+                    name = row[0]
                     line_count += 1
 
-                    cards_file = open('Classes/Files/assets/csv_logic/skins.csv')
+                    cards_file = open('Classes/Files/assets/csv_logic/skin_confs.csv')
                     csv_reader = csv.reader(cards_file, delimiter=',')
                     line_count = 0
                     for row in csv_reader:
                         if line_count == 0 or line_count == 1:
                             line_count += 1
                         else:
-                            if row[2] != "true" and row[21].startswith(name.lower()):
-                                # print(row[0], line_count - 3)
-                                id.append(line_count - 2)
-                            if row[0] != "":
-                                line_count += 1
+                            if row[1] == name:
+                                conf_name = row[0]
+                                skins_file = open('Classes/Files/assets/csv_logic/skins.csv')
+                                csv_reader = csv.reader(skins_file, delimiter=',')
+                                line_count = 0
+                                for row in csv_reader:
+
+                                    if line_count == 0 or line_count == 1:
+                                        line_count += 1
+                                    else:
+                                        if row[1] == conf_name:
+                                            id.append(line_count - 2)
+                                        if row[0] != "":
+                                            line_count += 1
 
                     char_file.close()
                     cards_file.close()
+                    skins_file.close()
                     return id

@@ -44,13 +44,17 @@ class Connection(threading.Thread):
 
                 if time.time() - self.timeout > 7:
                     print(f"Client with ip: {self.address} disconnected!")
-                    ClientsManager.RemovePlayer(self.player.ID)
+                    allSockets = ClientsManager.GetAll()
+                    if self.player.ID[1] in allSockets.keys() and allSockets[self.player.ID[1]]["Socket"] == self.client:
+                        ClientsManager.RemovePlayer(self.player.ID)
                     self.client.close()
                     break
 
         except ConnectionError:
             print(f"Client with ip: {self.address} disconnected!")
-            ClientsManager.RemovePlayer(self.player.ID)
+            allSockets = ClientsManager.GetAll()
+            if self.player.ID[1] in allSockets.keys() and allSockets[self.player.ID[1]]["Socket"] == self.client:
+                ClientsManager.RemovePlayer(self.player.ID)
             self.client.close()
 
         except Exception:

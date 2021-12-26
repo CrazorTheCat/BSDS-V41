@@ -1,3 +1,4 @@
+from Classes.Commands.Client.LogicPurchaseOfferCommand import LogicPurchaseOfferCommand
 from Classes.Commands.Server.LogicChangeAvatarNameCommand import LogicChangeAvatarNameCommand
 
 
@@ -41,7 +42,7 @@ class LogicCommandManager:
         515: 'LogicClearShopTickersCommand',
         517: 'LogicClaimRankUpRewardCommand',
         518: 'LogicPurchaseTicketsCommand',
-        519: 'LogicPurchaseOfferCommand',
+        519: LogicPurchaseOfferCommand,
         520: 'LogicLevelUpCommand',
         521: 'LogicPurchaseHeroLvlUpMaterialCommand',
         522: 'LogicHeroSeenCommand',
