@@ -1,3 +1,4 @@
+import cProfile, pstats, sys
 import time
 import threading
 import traceback
@@ -5,7 +6,6 @@ import traceback
 import Configuration
 from Classes.ClientsManager import ClientsManager
 from Classes.Instances.Classes.Player import Player
-from Classes.Logic.LogicLaserMessageFactory import LogicLaserMessageFactory
 from Classes.MessageManager import MessageManager
 from Classes.Messaging import Messaging
 from Classes.Utility import Utility
@@ -31,7 +31,7 @@ class Connection(threading.Thread):
     def run(self):
         try:
             while True:
-                time.sleep(0.01)
+                time.sleep(0.001)
                 messageHeader = self.client.recv(7)
                 if len(messageHeader) >= 7:
                     headerData = Messaging.readHeader(messageHeader)
@@ -41,6 +41,7 @@ class Connection(threading.Thread):
                     if Configuration.settings["DumpPacket"] == True:
                         Utility.dumpPacket(packetPayload, headerData[0])
                     MessageManager.receiveMessage(self, headerData[0], packetPayload)
+
                 if time.time() - self.timeout > 7:
                     print(f"Client with ip: {self.address} disconnected!")
                     ClientsManager.RemovePlayer(self.player.ID)

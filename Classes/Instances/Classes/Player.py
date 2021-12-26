@@ -35,13 +35,13 @@ class Player:
         1: {'CardID': 4, 'Skins': [1, 2, 69, 103, 135, 217, 303, 323, 324, 325, 326, 330, 331, 376], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         2: {'CardID': 8, 'Skins': [3, 25, 64, 102, 178, 218, 219, 262, 391], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         3: {'CardID': 12, 'Skins': [4, 5, 58, 72, 91, 201, 242, 397, 398], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
-        4: {'CardID': 16, 'Skins': [], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
+        4: {'CardID': 16, 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         5: {'CardID': 20, 'Skins': [10, 11, 96, 263, 301, 302, 348, 443], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         6: {'CardID': 24, 'Skins': [12, 27, 59, 90, 92, 116, 220, 221, 356, 433], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         7: {'CardID': 28, 'Skins': [8, 13, 44, 47, 123, 162, 174, 175, 253, 254, 255, 256, 393], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         8: {'CardID': 32, 'Skins': [14, 15, 16, 17, 36, 60, 65, 79, 80, 148, 149, 297, 298, 299, 300, 347, 432, 436, 456], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         9: {'CardID': 36, 'Skins': [6, 56, 57, 97, 133, 160, 236, 276, 314, 315, 316, 395, 427, 428, 457], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
-        10: {'CardID': 40, 'Skins': [], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
+        10: {'CardID': 40, 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         11: {'CardID': 44, 'Skins': [18, 50, 63, 75, 173, 227, 228, 229, 230], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         12: {'CardID': 48, 'Skins': [19, 20, 49, 95, 100, 101, 248, 249, 388], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         13: {'CardID': 52, 'Skins': [21, 71, 140, 214, 403, 404], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
@@ -55,7 +55,7 @@ class Player:
         21: {'CardID': 105, 'Skins': [67, 117, 172, 304, 305, 387], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         22: {'CardID': 110, 'Skins': [86, 87, 190, 204, 243, 246, 247, 252, 257, 258], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         23: {'CardID': 115, 'Skins': [62, 126, 131, 199, 200, 312, 349], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
-        24: {'CardID': 120, 'Skins': [], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
+        24: {'CardID': 120, 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         25: {'CardID': 125, 'Skins': [73, 93, 104, 132, 134, 267, 308, 421, 422], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         26: {'CardID': 130, 'Skins': [81, 146, 222, 273, 344, 419, 420], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         27: {'CardID': 177, 'Skins': [106, 107, 109, 143, 144, 283, 293, 399, 400, 406, 407, 410, 411], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
@@ -84,14 +84,14 @@ class Player:
         51: {'CardID': 410, 'Skins': [352], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         52: {'CardID': 417, 'Skins': [360, 361], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
         53: {'CardID': 427, 'Skins': [396], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
-        54: {'CardID': 434, 'Skins': [418, 455], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2}
+        54: {'CardID': 434, 'Skins': [418, 455], 'Trophies': 1250, 'HighestTrophies': 1250, 'PowerLevel': 11, 'PowerPoints': 0, 'State': 2},
     }
 
     def __init__(self):
         pass
 
-    def getDataTemplate(self, highid, lowid, token, overide=False):
-        if overide == False:
+    def getDataTemplate(self, highid, lowid, token):
+        if highid == 0 or lowid == 0:
             self.ID[0] = int(''.join([str(random.randint(0, 9)) for _ in range(1)]))
             self.ID[1] = int(''.join([str(random.randint(0, 9)) for _ in range(8)]))
             self.Token = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(40))

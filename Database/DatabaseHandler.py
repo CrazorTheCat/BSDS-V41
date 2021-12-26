@@ -9,12 +9,14 @@ class DatabaseHandler():
         self.cursor = self.conn.cursor()
         try:
             self.cursor.execute("""CREATE TABLE main (ID int, Token text, Data json)""")
+        except sqlite3.OperationalError:
+            pass
         except Exception:
             print(traceback.format_exc())
 
-    def createAccount(self, plrId, token, data):
+    def createAccount(self, data):
         try:
-            self.cursor.execute("INSERT INTO main (ID, Token, Data) VALUES (?, ?, ?)", (plrId[1], token, json.dumps(data, ensure_ascii=0)))
+            self.cursor.execute("INSERT INTO main (ID, Token, Data) VALUES (?, ?, ?)", (data["ID"][1], data["Token"], json.dumps(data, ensure_ascii=0)))
             self.conn.commit()
         except Exception:
             print(traceback.format_exc())
@@ -70,7 +72,6 @@ class DatabaseHandler():
             player.OwnedPins = playerData["OwnedPins"]
             player.OwnedThumbnails = playerData["OwnedThumbnails"]
             player.OwnedBrawlers = playerData["OwnedBrawlers"]
-
         except Exception:
             print(traceback.format_exc())
 

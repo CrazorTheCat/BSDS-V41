@@ -59,12 +59,8 @@ class LoginMessage(PiranhaMessage):
         db_instance = DatabaseHandler()
         if db_instance.playerExist(fields["PassToken"], fields["AccountID"]):
             db_instance.loadAccount(calling_instance.player, fields["AccountID"])
-
-        elif fields["AccountID"] != [0, 0]:
-            db_instance.createAccount(fields["AccountID"], fields["PassToken"], calling_instance.player.getDataTemplate(fields["AccountID"][0], fields["AccountID"][1], fields["PassToken"], True))
-
         else:
-            db_instance.createAccount(fields["AccountID"], fields["PassToken"], calling_instance.player.getDataTemplate(fields["AccountID"][0], fields["AccountID"][1], fields["PassToken"]))
+            db_instance.createAccount(calling_instance.player.getDataTemplate(fields["AccountID"][0], fields["AccountID"][1], fields["PassToken"]))
 
         contentUpdateInfo = Utility.getContentUpdaterInfo()
         if fields["ResourceSha"] != contentUpdateInfo[1]:

@@ -12,10 +12,13 @@ class OwnHomeDataMessage(PiranhaMessage):
         ownedBrawlersCount = len(player.OwnedBrawlers)
         ownedPinsCount = len(player.OwnedPins)
         ownedThumbnailCount = len(player.OwnedThumbnails)
-        ownedSkinsCount = 0
+        ownedSkins = []
 
         for brawlerInfo in player.OwnedBrawlers.values():
-            ownedSkinsCount += len(brawlerInfo["Skins"])
+            try:
+                ownedSkins.extend(brawlerInfo["Skins"])
+            except KeyError:
+                continue
 
         self.writeVint(int(time.time()))
         self.writeVint(0)
@@ -38,11 +41,10 @@ class OwnHomeDataMessage(PiranhaMessage):
 
         self.writeVint(0) # Current Random Skin
 
-        self.writeVint(ownedSkinsCount)
+        self.writeVint(len(ownedSkins))
 
-        for brawlerInfo in player.OwnedBrawlers.values():
-            for skinID in brawlerInfo["Skins"]:
-                self.writeDataReference(29, skinID)
+        for skinID in ownedSkins:
+            self.writeDataReference(29, skinID)
 
         self.writeVint(0) # Unlocked Skin Purchase Option
 
@@ -54,9 +56,9 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(1)
         self.writeBoolean(True)
         self.writeVint(player.TokensDoubler)
-        self.writeVint(2101574)
-        self.writeVint(351974)
-        self.writeVint(2709974)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
 
         self.writeVint(141)
         self.writeVint(135)
@@ -90,7 +92,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(0)
         self.writeVint(0)
 
-        self.writeVint(3)
+        self.writeVint(len(player.SelectedBrawlers))
         for i in player.SelectedBrawlers:
             self.writeDataReference(16, i)
 
@@ -120,15 +122,10 @@ class OwnHomeDataMessage(PiranhaMessage):
 
         self.writeVint(0)
 
-        self.writeVint(10)  # Brawlpass
-        for i in range(10):
+        self.writeVint(2)  # Brawlpass
+        for i in range(8, 10):
             self.writeVint(i)
-            if i != 0:
-                self.writeVint(34500)
-            elif i == 9:
-                self.writeVint(34495)
-            else:
-                self.writeVint(28500)
+            self.writeVint(34500)
             self.writeBoolean(True)
             self.writeVint(0)
 
@@ -316,26 +313,20 @@ class OwnHomeDataMessage(PiranhaMessage):
 
         self.writeVint(15)
 
-        self.writeVint(5 + ownedBrawlersCount)
+        self.writeVint(3 + ownedBrawlersCount)
 
         for brawlerInfo in player.OwnedBrawlers.values():
             self.writeDataReference(23, brawlerInfo["CardID"])
             self.writeVint(1)
 
-        self.writeDataReference(5, 1)
-        self.writeVint(94)
-
         self.writeDataReference(5, 8)
-        self.writeVint(player.Coins) # Coins
-
-        self.writeDataReference(5, 9)
-        self.writeVint(4)
+        self.writeVint(player.Coins)
 
         self.writeDataReference(5, 10)
         self.writeVint(player.StarPoints)
 
         self.writeDataReference(5, 13)
-        self.writeVint(23)
+        self.writeVint(99999) # Club coins
 
         self.writeVint(ownedBrawlersCount)
 

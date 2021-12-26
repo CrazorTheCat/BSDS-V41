@@ -2,7 +2,6 @@ import csv
 
 
 class Cards:
-
     def getStarpowersID():
         CardSkillsID = []
         with open('Classes/Files/assets/csv_logic/cards.csv') as csv_file:

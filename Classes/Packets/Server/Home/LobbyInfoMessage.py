@@ -17,6 +17,7 @@ class LobbyInfoMessage(PiranhaMessage):
         fields["PlayerCount"] = self.readVint()
         fields["Text"] = self.readString()
         fields["Unk1"] = self.readVint()
+        super().decode(fields)
         return {}
 
     def execute(message, calling_instance, fields):

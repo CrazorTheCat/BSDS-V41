@@ -16,7 +16,6 @@ class ServerConnection:
         self.server.bind(address)
         print("Listening for new connection...")
         while True:
-            time.sleep(0.1)
             self.server.listen()
             socket, address = self.server.accept()
             print("New connection with address", address[0], "on port", address[1])

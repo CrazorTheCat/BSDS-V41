@@ -19,7 +19,7 @@ class LoginOkMessage(PiranhaMessage):
         self.writeString()
         self.writeString()
         self.writeInt(41)
-        self.writeInt(144)
+        self.writeInt(148)
         self.writeInt(1)
         self.writeString("dev")
         self.writeInt(0)
