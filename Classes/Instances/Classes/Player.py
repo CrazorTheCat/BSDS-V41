@@ -7,6 +7,7 @@ class Player:
     ClientVersion = "0.0.0"
 
     ID = [0, 1]
+    Token = ""
     Name = "Brawler"
     Registered = False
     Thumbnail = 0

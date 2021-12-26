@@ -1,12 +1,6 @@
 from Classes.Packets.PiranhaMessage import PiranhaMessage
 
 
-import Configuration
-
-from Classes.Packets.PiranhaMessage import PiranhaMessage
-from Classes.Utility import Utility
-
-
 class ServerHelloMessage(PiranhaMessage):
     def __init__(self, messageData):
         super().__init__(messageData)

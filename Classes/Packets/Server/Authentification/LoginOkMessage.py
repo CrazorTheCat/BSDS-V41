@@ -4,7 +4,6 @@ from Classes.Packets.PiranhaMessage import PiranhaMessage
 import Configuration
 
 from Classes.Packets.PiranhaMessage import PiranhaMessage
-from Classes.Utility import Utility
 
 
 class LoginOkMessage(PiranhaMessage):
@@ -12,10 +11,10 @@ class LoginOkMessage(PiranhaMessage):
         super().__init__(messageData)
         self.messageVersion = 1
 
-    def encode(self, fields):
-        self.writeLong(fields["AccountID"][0], fields["AccountID"][1])
-        self.writeLong(fields["AccountID"][0], fields["AccountID"][1])
-        self.writeString(fields["PassToken"])
+    def encode(self, fields, player):
+        self.writeLong(player.ID[0], player.ID[1])
+        self.writeLong(player.ID[0], player.ID[1])
+        self.writeString(player.Token)
         self.writeString()
         self.writeString()
         self.writeInt(41)

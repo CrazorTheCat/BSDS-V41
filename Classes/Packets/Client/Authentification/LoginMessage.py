@@ -1,5 +1,4 @@
 import socket
-import time
 
 from Classes.ClientsManager import ClientsManager
 from Classes.Messaging import Messaging
@@ -51,10 +50,7 @@ class LoginMessage(PiranhaMessage):
         return fields
 
     def execute(message, calling_instance, fields):
-        ClientsManager.AddPlayer(calling_instance.player.ID, calling_instance.client)
         calling_instance.player.ClientVersion = f'{str(fields["ClientMajor"])}.{str(fields["ClientBuild"])}.{str(fields["ClientMinor"])}'
-        loginOkinfo = fields
-        loginOkinfo["Socket"] = calling_instance.client
         fields["Socket"] = calling_instance.client
         db_instance = DatabaseHandler()
         if db_instance.playerExist(fields["PassToken"], fields["AccountID"]):
@@ -62,17 +58,14 @@ class LoginMessage(PiranhaMessage):
         else:
             db_instance.createAccount(calling_instance.player.getDataTemplate(fields["AccountID"][0], fields["AccountID"][1], fields["PassToken"]))
 
+        ClientsManager.AddPlayer(calling_instance.player.ID, calling_instance.client)
         contentUpdateInfo = Utility.getContentUpdaterInfo()
         if fields["ResourceSha"] != contentUpdateInfo[1]:
             Messaging.sendMessage(20103, {'Socket': calling_instance.client, 'ErrorID': 7, 'Message': None, 'FingerprintData': Utility.getFingerprintData(contentUpdateInfo[1]), 'ContentURL': f'http://{socket.gethostbyname(socket.gethostname())}:8080'})
 
         elif fields["ClientMajor"] == 41:
-            Messaging.sendMessage(20104, loginOkinfo)
+            Messaging.sendMessage(20104, fields, calling_instance.player)
             Messaging.sendMessage(24101, fields, calling_instance.player)
-            # time.sleep(4.5)
-            # fields = {"Result": 1, "Rank": 1, "MapID": [15, 0], "HeroesCount": 1, "Heroes": [{"Brawler": {"ID": [16, 0], "SkinID": [29, 0]}, "Team": 0, "IsPlayer": True, "PlayerName": "Crazor"}]}
-            # fields["Socket"] = calling_instance.client
-            # Messaging.sendMessage(23456, fields, calling_instance.player)
 
     def getMessageType(self):
         return 10101

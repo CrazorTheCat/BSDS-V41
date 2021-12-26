@@ -43,13 +43,14 @@ class DatabaseHandler():
         try:
             self.cursor.execute("SELECT * from main where ID=?", (plrId[1],))
             return self.cursor.fetchall()[0]
+        except IndexError:
+            pass
         except Exception:
             print(traceback.format_exc())
 
     def loadAccount(self, player, plrId):
         try:
             self.cursor.execute("SELECT * from main where ID=?", (plrId[1],))
-            # print(player.ID, self.cursor.fetchall()[0])
             playerData = json.loads(self.cursor.fetchall()[0][2])
             player.ID = playerData["ID"]
             player.Name = playerData["Name"]
