@@ -3,7 +3,8 @@
 
 settings = {
     "DisableNagle": True,
-    "PrintEnabled": False,
+    "PrintEnabled": True,
+    "UseContentUpdater": False,
     "Proxy": False,
     "DumpPacket": False,
     "Blacklist": [24109],

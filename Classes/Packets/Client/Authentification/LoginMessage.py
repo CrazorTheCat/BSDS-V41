@@ -1,5 +1,6 @@
 import socket
 
+import Configuration
 from Classes.ClientsManager import ClientsManager
 from Classes.Messaging import Messaging
 
@@ -61,7 +62,7 @@ class LoginMessage(PiranhaMessage):
         ClientsManager.AddPlayer(calling_instance.player.ID, calling_instance.client)
 
         contentUpdateInfo = Utility.getContentUpdaterInfo()
-        if fields["ResourceSha"] != contentUpdateInfo[1]:
+        if Configuration.settings["UseContentUpdater"] == True and fields["ResourceSha"] != contentUpdateInfo[1]:
             Messaging.sendMessage(20103, {'Socket': calling_instance.client, 'ErrorID': 7, 'Message': None, 'FingerprintData': Utility.getFingerprintData(contentUpdateInfo[1]), 'ContentURL': f'http://{socket.gethostbyname(socket.gethostname())}:8080'})
 
         elif fields["ClientMajor"] == 41:
