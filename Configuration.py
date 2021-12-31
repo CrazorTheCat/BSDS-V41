@@ -4,7 +4,7 @@
 settings = {
     "DisableNagle": True,
     "PrintEnabled": True,
-    "UseContentUpdater": False,
+    "UseContentUpdater": False, # EN False for Disable Content updater RU False отключить загрузку данных
     "Proxy": False,
     "DumpPacket": False,
     "Blacklist": [24109],
