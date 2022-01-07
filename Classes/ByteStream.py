@@ -162,7 +162,7 @@ class ByteStream(ChecksumEncoder):
             return bytes(result)
         else:
             Debugger.warning("readBytes too long array, max", max)
-        return 0
+        return b''
 
     def readBytesLength(self):
         self.bitoffset = 0
