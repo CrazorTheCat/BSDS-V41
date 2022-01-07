@@ -6,8 +6,6 @@ from Classes.Logic.LogicStringUtil import LogicStringUtil
 from Classes.Debugger import Debugger
 from Classes.Logic.LogicLong import LogicLong
 
-## -- 
-
 
 class ByteStream(ChecksumEncoder):
     def __init__(self, messageBuffer, unknown=0):
@@ -558,13 +556,35 @@ class ByteStream(ChecksumEncoder):
         self.writeIntLittleEndian(len(data))
         self.messagePayload += compressedText
 
-    def readDataReference(self):
-        return ByteStreamHelper.readDataReference(self)
-
-    def writeDataReference(self, high, low=-1):
-        return ByteStreamHelper.writeDataReference(self, high, low)
-
     def readCompressedString(self):
         data_length = self.readInt()
         self.readIntLittleEndian()
         return zlib.decompress(self.readBytes(data_length - 4))
+
+    #region ByteStreamHelper lazy call
+
+    def readDataReference(self):
+        return ByteStreamHelper.readDataReference(self)
+
+    def writeDataReference(self, high=0, low=-1):
+        ByteStreamHelper.writeDataReference(self, high, low)
+
+    def decodeIntList(self):
+        return ByteStreamHelper.decodeIntList(self)
+
+    def encodeIntList(self, intList):
+        ByteStreamHelper.encodeIntList(self, intList)
+
+    def decodeLogicLong(self, logicLong=None):
+        return ByteStreamHelper.decodeLogicLong(self, logicLong)
+
+    def encodeLogicLong(self, logicLong):
+        ByteStreamHelper.encodeLogicLong(self, logicLong)
+
+    def decodeLogicLongList(self):
+        return ByteStreamHelper.decodeLogicLongList(self)
+
+    def encodeLogicLongList(self, logicLongList):
+        ByteStreamHelper.encodeLogicLongList(self, logicLongList)
+
+    #endregion

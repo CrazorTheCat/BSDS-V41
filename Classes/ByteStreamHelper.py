@@ -14,7 +14,7 @@ class ByteStreamHelper:
         result.append(self.readVInt())
         return result
 
-    def writeDataReference(self, high, low):
+    def writeDataReference(self, high=0, low=-1):
         self.writeVInt(high)
         if high != 0:
             self.writeVInt(low)
@@ -35,8 +35,11 @@ class ByteStreamHelper:
         intList = []
         for i in range(length):
             intList.append(self.readVInt())
+        return intList
 
-    def decodeLogicLong(self, logicLong):
+    def decodeLogicLong(self, logicLong=None):
+        if logicLong is None:
+            logicLong = LogicLong(0, 0)
         high = self.readVInt()
         logicLong.high = high
         low = self.readVInt()
@@ -55,7 +58,9 @@ class ByteStreamHelper:
         for i in intList:
             self.writeVInt(i)
 
-    def encodeLogicLong(self, logicLong: LogicLong):
+    def encodeLogicLong(self, logicLong):
+        if logicLong is None:
+            logicLong = LogicLong(0, 0)
         self.writeVInt(logicLong.getHigherInt(self))
         self.writeVInt(logicLong.getLowerInt(self))
 
