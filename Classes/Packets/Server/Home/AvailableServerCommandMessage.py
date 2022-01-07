@@ -8,7 +8,7 @@ class AvailableServerCommandMessage(PiranhaMessage):
         self.messageVersion = 0
 
     def encode(self, fields):
-        self.writeVint(fields["Command"]["ID"])
+        self.writeVInt(fields["Command"]["ID"])
         command = LogicCommandManager.createCommand(fields["Command"]["ID"], self.messagePayload)
         self.messagePayload = command.encode(fields)
 

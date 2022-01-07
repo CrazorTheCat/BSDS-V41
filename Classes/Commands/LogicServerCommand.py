@@ -8,9 +8,9 @@ class LogicServerCommand(LogicCommand):
         super().__init__(commandData)
 
     def addCommand(self, fields):
-        self.writeVint(0)
+        self.writeVInt(0)
         LogicCommand.encode(self, fields)
 
     def decode(calling_instance, fields):
-        fields["ID"] = calling_instance.readVint()
+        fields["ID"] = calling_instance.readVInt()
         return LogicCommand.decode(calling_instance, fields)

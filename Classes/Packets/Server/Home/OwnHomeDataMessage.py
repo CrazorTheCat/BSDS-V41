@@ -20,115 +20,115 @@ class OwnHomeDataMessage(PiranhaMessage):
             except KeyError:
                 continue
 
-        self.writeVint(int(time.time()))
-        self.writeVint(0)
+        self.writeVInt(int(time.time()))
+        self.writeVInt(0)
 
-        self.writeVint(0)
-        self.writeVint(0)
-        self.writeVint(player.Trophies) # Trophies
-        self.writeVint(player.HighestTrophies) # Highest Trophies
-        self.writeVint(player.HighestTrophies)
-        self.writeVint(player.TrophyRoadTier)
-        self.writeVint(player.Experience) # Experience
+        self.writeVInt(0)
+        self.writeVInt(0)
+        self.writeVInt(player.Trophies) # Trophies
+        self.writeVInt(player.HighestTrophies) # Highest Trophies
+        self.writeVInt(player.HighestTrophies)
+        self.writeVInt(player.TrophyRoadTier)
+        self.writeVInt(player.Experience) # Experience
         self.writeDataReference(28, player.Thumbnail) # Thumbnail
         self.writeDataReference(43, player.Namecolor) # Namecolor
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(0) # Selected Skins
+        self.writeVInt(0) # Selected Skins
 
-        self.writeVint(0) # Randomizer Skin Selected
+        self.writeVInt(0) # Randomizer Skin Selected
 
-        self.writeVint(0) # Current Random Skin
+        self.writeVInt(0) # Current Random Skin
 
-        self.writeVint(len(ownedSkins))
+        self.writeVInt(len(ownedSkins))
 
         for skinID in ownedSkins:
             self.writeDataReference(29, skinID)
 
-        self.writeVint(0) # Unlocked Skin Purchase Option
+        self.writeVInt(0) # Unlocked Skin Purchase Option
 
-        self.writeVint(0) # New Item State
+        self.writeVInt(0) # New Item State
 
-        self.writeVint(0)
-        self.writeVint(player.HighestTrophies)
-        self.writeVint(0)
-        self.writeVint(1)
+        self.writeVInt(0)
+        self.writeVInt(player.HighestTrophies)
+        self.writeVInt(0)
+        self.writeVInt(1)
         self.writeBoolean(True)
-        self.writeVint(player.TokensDoubler)
-        self.writeVint(0)
-        self.writeVint(0)
-        self.writeVint(0)
+        self.writeVInt(player.TokensDoubler)
+        self.writeVInt(0)
+        self.writeVInt(0)
+        self.writeVInt(0)
 
-        self.writeVint(141)
-        self.writeVint(135)
+        self.writeVInt(141)
+        self.writeVInt(135)
 
-        self.writeVint(5)
+        self.writeVInt(5)
 
-        self.writeVint(93)
-        self.writeVint(206)
-        self.writeVint(456)
-        self.writeVint(792)
-        self.writeVint(729)
+        self.writeVInt(93)
+        self.writeVInt(206)
+        self.writeVInt(456)
+        self.writeVInt(792)
+        self.writeVInt(729)
 
         self.writeBoolean(False) # Offer 1
         self.writeBoolean(False) # Offer 2
         self.writeBoolean(True) # Token Doubler Enabled
-        self.writeVint(2)  # Token Doubler New Tag State
-        self.writeVint(2)  # Event Tickets New Tag State
-        self.writeVint(2)  # Coin Packs New Tag State
-        self.writeVint(0)  # Change Name Cost
-        self.writeVint(0)  # Timer For the Next Name Change
+        self.writeVInt(2)  # Token Doubler New Tag State
+        self.writeVInt(2)  # Event Tickets New Tag State
+        self.writeVInt(2)  # Coin Packs New Tag State
+        self.writeVInt(0)  # Change Name Cost
+        self.writeVInt(0)  # Timer For the Next Name Change
 
-        self.writeVint(1) # Offers count
+        self.writeVInt(1) # Offers count
 
-        self.writeVint(1)  # RewardCount
+        self.writeVInt(1)  # RewardCount
         for i in range(1):
-            self.writeVint(6)  # ItemType
-            self.writeVint(0)
+            self.writeVInt(6)  # ItemType
+            self.writeVInt(0)
             self.writeDataReference(0)  # CsvID
-            self.writeVint(0)
+            self.writeVInt(0)
 
-        self.writeVint(0)
-        self.writeVint(666)
-        self.writeVint(950400)
-        self.writeVint(2)
-        self.writeVint(0)
+        self.writeVInt(0)
+        self.writeVInt(666)
+        self.writeVInt(950400)
+        self.writeVInt(2)
+        self.writeVInt(0)
         self.writeBoolean(False)
-        self.writeVint(3917)
-        self.writeVint(0)
+        self.writeVInt(3917)
+        self.writeVInt(0)
         self.writeBoolean(False)
-        self.writeVint(49)
+        self.writeVInt(49)
         self.writeInt(0)
         self.writeString("Unlock all skins")
         self.writeBoolean(False)
         self.writeString()
-        self.writeVint(-1)
+        self.writeVInt(-1)
         self.writeBoolean(False)
-        self.writeVint(0)
-        self.writeVint(0)
+        self.writeVInt(0)
+        self.writeVInt(0)
         self.writeString()
         self.writeBoolean(False)
         self.writeBoolean(False)
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(player.Tokens)
-        self.writeVint(-1)
+        self.writeVInt(player.Tokens)
+        self.writeVInt(-1)
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(0)
-        self.writeVint(0)
+        self.writeVInt(0)
+        self.writeVInt(0)
 
-        self.writeVint(len(player.SelectedBrawlers))
+        self.writeVInt(len(player.SelectedBrawlers))
         for i in player.SelectedBrawlers:
             self.writeDataReference(16, i)
 
         self.writeString(player.Region)
         self.writeString(player.ContentCreator)
 
-        self.writeVint(19)
+        self.writeVInt(19)
         self.writeLong(2, 1)  # Unknown
         self.writeLong(3, 0)  # TokensGained
         self.writeLong(4, 0)  # TrophiesGained
@@ -149,145 +149,145 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeLong(22, 1)
         self.writeLong(24, 1)  # Have already watched club league stupid animation
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(2)  # Brawlpass
+        self.writeVInt(2)  # Brawlpass
         for i in range(8, 10):
-            self.writeVint(i)
-            self.writeVint(34500)
+            self.writeVInt(i)
+            self.writeVInt(34500)
             self.writeBoolean(True)
-            self.writeVint(0)
+            self.writeVInt(0)
 
-            self.writeUInt8(2)
-            self.writeUInt(4294967292)
-            self.writeUInt(4294967295)
-            self.writeUInt(511)
-            self.writeUInt(0)
+            self.writeByte(2)
+            self.writeInt(4294967292)
+            self.writeInt(4294967295)
+            self.writeInt(511)
+            self.writeInt(0)
 
-            self.writeUInt8(1)
-            self.writeUInt(4294967292)
-            self.writeUInt(4294967295)
-            self.writeUInt(511)
-            self.writeUInt(0)
+            self.writeByte(1)
+            self.writeInt(4294967292)
+            self.writeInt(4294967295)
+            self.writeInt(511)
+            self.writeInt(0)
 
-        self.writeVint(0)
-
-        self.writeBoolean(True)
-        self.writeVint(0)
+        self.writeVInt(0)
 
         self.writeBoolean(True)
-        self.writeVint(ownedPinsCount + ownedThumbnailCount)  # Vanity Count
+        self.writeVInt(0)
+
+        self.writeBoolean(True)
+        self.writeVInt(ownedPinsCount + ownedThumbnailCount)  # Vanity Count
         for i in player.OwnedPins:
             self.writeDataReference(52, i)
-            self.writeVint(1)
+            self.writeVInt(1)
             for i in range(1):
-                self.writeVint(1)
-                self.writeVint(1)
+                self.writeVInt(1)
+                self.writeVInt(1)
 
         for i in player.OwnedThumbnails:
             self.writeDataReference(28, i)
-            self.writeVint(1)
+            self.writeVInt(1)
             for i in range(1):
-                self.writeVint(1)
-                self.writeVint(1)
+                self.writeVInt(1)
+                self.writeVInt(1)
 
         self.writeBoolean(False)
 
         self.writeInt(0)
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(25) # Count
+        self.writeVInt(25) # Count
 
-        self.writeVint(1)
-        self.writeVint(2)
-        self.writeVint(3)
-        self.writeVint(4)
-        self.writeVint(5)
-        self.writeVint(6)
-        self.writeVint(7)
-        self.writeVint(8)
-        self.writeVint(9)
-        self.writeVint(10)
-        self.writeVint(11)
-        self.writeVint(12)
-        self.writeVint(13)
-        self.writeVint(14)
-        self.writeVint(15)
-        self.writeVint(16)
-        self.writeVint(17)
-        self.writeVint(20)
-        self.writeVint(21)
-        self.writeVint(22)
-        self.writeVint(23)
-        self.writeVint(24)
-        self.writeVint(30)
-        self.writeVint(31)
-        self.writeVint(32)
+        self.writeVInt(1)
+        self.writeVInt(2)
+        self.writeVInt(3)
+        self.writeVInt(4)
+        self.writeVInt(5)
+        self.writeVInt(6)
+        self.writeVInt(7)
+        self.writeVInt(8)
+        self.writeVInt(9)
+        self.writeVInt(10)
+        self.writeVInt(11)
+        self.writeVInt(12)
+        self.writeVInt(13)
+        self.writeVInt(14)
+        self.writeVInt(15)
+        self.writeVInt(16)
+        self.writeVInt(17)
+        self.writeVInt(20)
+        self.writeVInt(21)
+        self.writeVInt(22)
+        self.writeVInt(23)
+        self.writeVInt(24)
+        self.writeVInt(30)
+        self.writeVInt(31)
+        self.writeVInt(32)
 
-        self.writeVint(3) # Events
+        self.writeVInt(3) # Events
 
         eventIndex = 1
         for i in [5, 7, 24]:
-            self.writeVint(-1)
-            self.writeVint(eventIndex)  # EventType
-            self.writeVint(0)  # EventsBeginCountdown
-            self.writeVint(51208)  # Timer
-            self.writeVint(0)  # tokens reward for new event
+            self.writeVInt(-1)
+            self.writeVInt(eventIndex)  # EventType
+            self.writeVInt(0)  # EventsBeginCountdown
+            self.writeVInt(51208)  # Timer
+            self.writeVInt(0)  # tokens reward for new event
             self.writeDataReference(15, i)  # MapID
-            self.writeVint(-1)  # GameModeVariation
-            self.writeVint(2)  # State
+            self.writeVInt(-1)  # GameModeVariation
+            self.writeVInt(2)  # State
             self.writeString()
-            self.writeVint(0)
-            self.writeVint(0)
-            self.writeVint(0)
-            self.writeVint(0)  # Modifiers
-            self.writeVint(0)
-            self.writeVint(0)
+            self.writeVInt(0)
+            self.writeVInt(0)
+            self.writeVInt(0)
+            self.writeVInt(0)  # Modifiers
+            self.writeVInt(0)
+            self.writeVInt(0)
             self.writeBoolean(False)  # Map Maker Map Structure Array
-            self.writeVint(0)
+            self.writeVInt(0)
             self.writeBoolean(False)  # Power League Data Array
-            self.writeVint(0)
-            self.writeVint(0)
+            self.writeVInt(0)
+            self.writeVInt(0)
             self.writeBoolean(False)  # ChronosTextEntry
             self.writeBoolean(False)
             self.writeBoolean(False)
-            self.writeVint(-1)
+            self.writeVInt(-1)
             self.writeBoolean(False)
             self.writeBoolean(False)
             eventIndex += 1
 
-        self.writeVint(0) # Comming Events
+        self.writeVInt(0) # Comming Events
 
-        self.writeVint(10)  # Brawler Upgrade Cost
-        self.writeVint(20)
-        self.writeVint(35)
-        self.writeVint(75)
-        self.writeVint(140)
-        self.writeVint(290)
-        self.writeVint(480)
-        self.writeVint(800)
-        self.writeVint(1250)
-        self.writeVint(1875)
-        self.writeVint(2800)
+        self.writeVInt(10)  # Brawler Upgrade Cost
+        self.writeVInt(20)
+        self.writeVInt(35)
+        self.writeVInt(75)
+        self.writeVInt(140)
+        self.writeVInt(290)
+        self.writeVInt(480)
+        self.writeVInt(800)
+        self.writeVInt(1250)
+        self.writeVInt(1875)
+        self.writeVInt(2800)
 
-        self.writeVint(4)  # Shop Coins Price
-        self.writeVint(20)
-        self.writeVint(50)
-        self.writeVint(140)
-        self.writeVint(280)
+        self.writeVInt(4)  # Shop Coins Price
+        self.writeVInt(20)
+        self.writeVInt(50)
+        self.writeVInt(140)
+        self.writeVInt(280)
 
-        self.writeVint(4)  # Shop Coins Amount
-        self.writeVint(150)
-        self.writeVint(400)
-        self.writeVint(1200)
-        self.writeVint(2600)
+        self.writeVInt(4)  # Shop Coins Amount
+        self.writeVInt(150)
+        self.writeVInt(400)
+        self.writeVInt(1200)
+        self.writeVInt(2600)
 
         self.writeBoolean(True)  # Show Offers Packs
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(23)  # IntValueEntry
+        self.writeVInt(23)  # IntValueEntry
 
         self.writeLong(10008, 501)
         self.writeLong(65, 2)
@@ -313,23 +313,23 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeLong(17, 4)
         self.writeLong(10046, 1)
 
-        self.writeVint(0) # Timed Int Value Entry
+        self.writeVInt(0) # Timed Int Value Entry
 
-        self.writeVint(0)  # Custom Event
+        self.writeVInt(0)  # Custom Event
 
-        self.writeVint(0)
-        self.writeVint(0)
-        self.writeVint(0)
+        self.writeVInt(0)
+        self.writeVInt(0)
+        self.writeVInt(0)
 
         self.writeLong(player.ID[0], player.ID[1])  # PlayerID
 
-        self.writeVint(0) # NotificationFactory
+        self.writeVInt(0) # NotificationFactory
 
-        self.writeVint(-1)
+        self.writeVInt(-1)
         self.writeBoolean(False)
-        self.writeVint(0)
-        self.writeVint(0)
-        self.writeVint(0)
+        self.writeVInt(0)
+        self.writeVInt(0)
+        self.writeVInt(0)
 
         self.writeVLong(player.ID[0], player.ID[1])
         self.writeVLong(0, 0)
@@ -340,84 +340,84 @@ class OwnHomeDataMessage(PiranhaMessage):
 
         self.writeInt(0)
 
-        self.writeVint(15)
+        self.writeVInt(15)
 
-        self.writeVint(3 + ownedBrawlersCount)
+        self.writeVInt(3 + ownedBrawlersCount)
 
         for brawlerInfo in player.OwnedBrawlers.values():
             self.writeDataReference(23, brawlerInfo["CardID"])
-            self.writeVint(1)
+            self.writeVInt(1)
 
         self.writeDataReference(5, 8)
-        self.writeVint(player.Coins)
+        self.writeVInt(player.Coins)
 
         self.writeDataReference(5, 10)
-        self.writeVint(player.StarPoints)
+        self.writeVInt(player.StarPoints)
 
         self.writeDataReference(5, 13)
-        self.writeVint(99999) # Club coins
+        self.writeVInt(99999) # Club coins
 
-        self.writeVint(ownedBrawlersCount)
+        self.writeVInt(ownedBrawlersCount)
 
         for brawlerID,brawlerInfo in player.OwnedBrawlers.items():
             self.writeDataReference(16, brawlerID)
-            self.writeVint(brawlerInfo["Trophies"])
+            self.writeVInt(brawlerInfo["Trophies"])
 
-        self.writeVint(ownedBrawlersCount)
-
-        for brawlerID, brawlerInfo in player.OwnedBrawlers.items():
-            self.writeDataReference(16, brawlerID)
-            self.writeVint(brawlerInfo["HighestTrophies"])
-
-        self.writeVint(0)
-
-        self.writeVint(ownedBrawlersCount)
+        self.writeVInt(ownedBrawlersCount)
 
         for brawlerID, brawlerInfo in player.OwnedBrawlers.items():
             self.writeDataReference(16, brawlerID)
-            self.writeVint(brawlerInfo["PowerPoints"])
+            self.writeVInt(brawlerInfo["HighestTrophies"])
 
-        self.writeVint(ownedBrawlersCount)
+        self.writeVInt(0)
 
-        for brawlerID, brawlerInfo in player.OwnedBrawlers.items():
-            self.writeDataReference(16, brawlerID)
-            self.writeVint(brawlerInfo["PowerLevel"] - 1)
-
-        self.writeVint(0)
-
-        self.writeVint(ownedBrawlersCount)
+        self.writeVInt(ownedBrawlersCount)
 
         for brawlerID, brawlerInfo in player.OwnedBrawlers.items():
             self.writeDataReference(16, brawlerID)
-            self.writeVint(brawlerInfo["State"])
+            self.writeVInt(brawlerInfo["PowerPoints"])
 
-        self.writeVint(0)
+        self.writeVInt(ownedBrawlersCount)
 
-        self.writeVint(0)
+        for brawlerID, brawlerInfo in player.OwnedBrawlers.items():
+            self.writeDataReference(16, brawlerID)
+            self.writeVInt(brawlerInfo["PowerLevel"] - 1)
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(0)
+        self.writeVInt(ownedBrawlersCount)
 
-        self.writeVint(0)
+        for brawlerID, brawlerInfo in player.OwnedBrawlers.items():
+            self.writeDataReference(16, brawlerID)
+            self.writeVInt(brawlerInfo["State"])
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(0)
+        self.writeVInt(0)
 
-        self.writeVint(player.Gems)  # Diamonds
-        self.writeVint(player.Gems)  # Free Diamonds
-        self.writeVint(player.Level)  # Player Level
-        self.writeVint(100)
-        self.writeVint(0)  # CumulativePurchasedDiamonds or Avatar User Level Tier | 10000 < Level Tier = 3 | 1000 < Level Tier = 2 | 0 < Level Tier = 1
-        self.writeVint(0)  # Battle Count
-        self.writeVint(0)  # WinCount
-        self.writeVint(0)  # LoseCount
-        self.writeVint(0)  # WinLooseStreak
-        self.writeVint(0)  # NpcWinCount
-        self.writeVint(0)  # NpcLoseCount
-        self.writeVint(2)  # TutorialState | shouldGoToFirstTutorialBattle = State == 0
-        self.writeVint(0)
+        self.writeVInt(0)
+
+        self.writeVInt(0)
+
+        self.writeVInt(0)
+
+        self.writeVInt(0)
+
+        self.writeVInt(0)
+
+        self.writeVInt(player.Gems)  # Diamonds
+        self.writeVInt(player.Gems)  # Free Diamonds
+        self.writeVInt(player.Level)  # Player Level
+        self.writeVInt(100)
+        self.writeVInt(0)  # CumulativePurchasedDiamonds or Avatar User Level Tier | 10000 < Level Tier = 3 | 1000 < Level Tier = 2 | 0 < Level Tier = 1
+        self.writeVInt(0)  # Battle Count
+        self.writeVInt(0)  # WinCount
+        self.writeVInt(0)  # LoseCount
+        self.writeVInt(0)  # WinLooseStreak
+        self.writeVInt(0)  # NpcWinCount
+        self.writeVInt(0)  # NpcLoseCount
+        self.writeVInt(2)  # TutorialState | shouldGoToFirstTutorialBattle = State == 0
+        self.writeVInt(0)
 
     def decode(self):
         fields = {}
@@ -453,7 +453,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         # for i in range(EventUrlCount):
         #     fields["EventAssetsUrls"].append(self.readString())
         #
-        # fields["SecondsUntilAccountDeletion"] = self.readVint()
+        # fields["SecondsUntilAccountDeletion"] = self.readVInt()
         # fields["SupercellIDToken"] = self.readCompressedString()
         # fields["IsSupercellIDLogoutAllDevicesAllowed"] = self.readBoolean()
         # fields["isSupercellIDEligible"] = self.readBoolean()

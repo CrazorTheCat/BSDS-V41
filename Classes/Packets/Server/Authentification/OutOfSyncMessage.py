@@ -7,15 +7,15 @@ class OutOfSyncMessage(PiranhaMessage):
         self.messageVersion = 0
 
     def encode(self, fields):
-        self.writeVint(fields["ServerChecksum"])
-        self.writeVint(fields["ClientChecksum"])
-        self.writeVint(fields["Tick"])
+        self.writeVInt(fields["ServerChecksum"])
+        self.writeVInt(fields["ClientChecksum"])
+        self.writeVInt(fields["Tick"])
 
     def decode(self):
         fields = {}
-        fields["ServerChecksum"] = self.readVint()
-        fields["ClientChecksum"] = self.readVint()
-        fields["Tick"] = self.readVint()
+        fields["ServerChecksum"] = self.readVInt()
+        fields["ClientChecksum"] = self.readVInt()
+        fields["Tick"] = self.readVInt()
         super().decode(fields)
         return fields
 

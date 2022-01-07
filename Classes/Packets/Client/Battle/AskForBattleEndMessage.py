@@ -13,13 +13,13 @@ class AskForBattleEndMessage(PiranhaMessage):
 
     def decode(self):
         fields = {}
-        fields["Unk1"] = self.readVint()
-        fields["Result"] = self.readVint()
-        fields["Rank"] = self.readVint()
+        fields["Unk1"] = self.readVInt()
+        fields["Result"] = self.readVInt()
+        fields["Rank"] = self.readVInt()
         fields["MapID"] = self.readDataReference()
-        fields["HeroesCount"] = self.readVint()
+        fields["HeroesCount"] = self.readVInt()
         fields["Heroes"] = []
-        for i in range(fields["HeroesCount"]): fields["Heroes"].append({"Brawler": {"ID": self.readDataReference(), "SkinID": self.readDataReference()}, "Team": self.readVint(), "IsPlayer": self.readBoolean(), "PlayerName": self.readString()})
+        for i in range(fields["HeroesCount"]): fields["Heroes"].append({"Brawler": {"ID": self.readDataReference(), "SkinID": self.readDataReference()}, "Team": self.readVInt(), "IsPlayer": self.readBoolean(), "PlayerName": self.readString()})
         super().decode(fields)
         return fields
 

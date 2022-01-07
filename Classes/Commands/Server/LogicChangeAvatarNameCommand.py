@@ -7,14 +7,14 @@ class LogicChangeAvatarNameCommand(LogicServerCommand):
 
     def encode(self, fields):
         self.writeString(fields["Name"])
-        self.writeVint(0)
+        self.writeVInt(0)
         LogicServerCommand.encode(self, fields)
         return self.messagePayload
 
     def decode(self, calling_instance):
         fields = {}
         fields["Name"] = calling_instance.readString()
-        fields["Unk1"] = calling_instance.readVint()
+        fields["Unk1"] = calling_instance.readVInt()
         return LogicServerCommand.decode(calling_instance, fields)
 
     def getCommandType(self):

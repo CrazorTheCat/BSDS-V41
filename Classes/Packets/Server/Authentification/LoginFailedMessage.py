@@ -30,7 +30,7 @@ class LoginFailedMessage(PiranhaMessage):
         self.writeBoolean(True)
         self.writeBoolean(True)
         self.writeString()
-        self.writeVint(0)
+        self.writeVInt(0)
         self.writeString()
         self.writeBoolean(False)
 
@@ -56,7 +56,7 @@ class LoginFailedMessage(PiranhaMessage):
         fields["Unk1"] = self.readBoolean()
         fields["Unk2"] = self.readBoolean()
         fields["Unk3"] = self.readString()
-        fields["Unk4"] = self.readVint()
+        fields["Unk4"] = self.readVInt()
         fields["Unk5"] = self.readString()
         fields["OptionalTargetedAccountIdState"] = self.readBoolean()
         if fields["OptionalTargetedAccountIdState"] == True:

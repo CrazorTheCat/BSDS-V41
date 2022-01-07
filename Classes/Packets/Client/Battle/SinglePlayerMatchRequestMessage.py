@@ -1,27 +1,26 @@
+from Classes.Messaging import Messaging
+
 from Classes.Packets.PiranhaMessage import PiranhaMessage
 
 
-class ServerHelloMessage(PiranhaMessage):
+class SinglePlayerMatchRequestMessage(PiranhaMessage):
     def __init__(self, messageData):
         super().__init__(messageData)
         self.messageVersion = 0
 
     def encode(self, fields):
-        self.writeInt(24)
-        for i in range(24):
-            self.writeByte(i)
+        pass
 
     def decode(self):
         fields = {}
-        fields["Random"] = self.readBytesWithoutLength()
-        super().decode(fields)
         return fields
 
     def execute(message, calling_instance, fields):
-        pass
+        fields["Socket"] = calling_instance.client
+        Messaging.sendMessage(23456, fields, calling_instance.player)
 
     def getMessageType(self):
-        return 20100
+        return 14118
 
     def getMessageVersion(self):
         return self.messageVersion

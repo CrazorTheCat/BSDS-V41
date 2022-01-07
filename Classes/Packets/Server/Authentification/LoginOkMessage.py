@@ -39,7 +39,7 @@ class LoginOkMessage(PiranhaMessage):
         self.writeInt(2)
         self.writeString('https://event-assets.brawlstars.com')
         self.writeString('https://24b999e6da07674e22b0-8209975788a0f2469e68e84405ae4fcf.ssl.cf2.rackcdn.com/event-assets')
-        self.writeVint(0)
+        self.writeVInt(0)
         self.writeCompressedString(b'')
         self.writeBoolean(True)
         self.writeBoolean(False)
@@ -84,7 +84,7 @@ class LoginOkMessage(PiranhaMessage):
         for i in range(EventUrlCount):
             fields["EventAssetsUrls"].append(self.readString())
 
-        fields["SecondsUntilAccountDeletion"] = self.readVint()
+        fields["SecondsUntilAccountDeletion"] = self.readVInt()
         fields["SupercellIDToken"] = self.readCompressedString()
         fields["IsSupercellIDLogoutAllDevicesAllowed"] = self.readBoolean()
         fields["isSupercellIDEligible"] = self.readBoolean()

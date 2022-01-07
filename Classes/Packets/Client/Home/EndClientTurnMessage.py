@@ -15,13 +15,13 @@ class EndClientTurnMessage(PiranhaMessage):
     def decode(self):
         fields = {}
         self.readBoolean()
-        fields["Tick"] = self.readVint()
-        fields["Checksum"] = self.readVint()
-        fields["CommandsCount"] = self.readVint()
+        fields["Tick"] = self.readVInt()
+        fields["Checksum"] = self.readVInt()
+        fields["CommandsCount"] = self.readVInt()
         super().decode(fields)
         fields["Commands"] = []
         for i in range(fields["CommandsCount"]):
-            fields["Commands"].append({"ID": self.readVint()})
+            fields["Commands"].append({"ID": self.readVInt()})
             if LogicCommandManager.commandExist(fields["Commands"][i]["ID"]):
                 command = LogicCommandManager.createCommand(fields["Commands"][i]["ID"])
                 print("Command", LogicCommandManager.getCommandsName(fields["Commands"][i]["ID"]))

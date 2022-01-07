@@ -7,7 +7,6 @@ class PiranhaMessage(ByteStream):
     def __init__(self, messageData):
         super().__init__(messageData)
         self.messageBuffer = messageData
-        self.messagePayload = b''
         self.fields = {}
 
     def decode(self, fields):

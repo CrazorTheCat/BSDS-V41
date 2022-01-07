@@ -67,14 +67,14 @@ class LogicPurchaseOfferCommand(LogicCommand):
 
     def encode(self, fields):
         LogicCommand.encode(self, fields)
-        self.writeVint(0)
+        self.writeVInt(0)
         self.writeDataReference(0)
         return self.messagePayload
 
     def decode(self, calling_instance):
         fields = {}
         LogicCommand.decode(calling_instance, fields, False)
-        fields["Unk1"] = calling_instance.readVint()
+        fields["Unk1"] = calling_instance.readVInt()
         fields["Unk2"] = calling_instance.readDataReference()
         LogicCommand.parseFields(fields)
         return fields
